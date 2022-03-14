@@ -4,6 +4,11 @@ import { action } from '@ember/object';
 
 export default class CartController extends Controller {
   price = 10;
+  date = 1909;
+
+  get date(){
+    return this.date;
+  }
 
 
   // @service('shopping-cart') cart;

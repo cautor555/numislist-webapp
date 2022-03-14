@@ -3,4 +3,5 @@
 
 <h1>Coin</h1>
 
-<h2>{{this.model}}</h2>
+{{#each @model as |collectionentity|}}
+<h2>{{collectionentity.date}}</h2>    {{/each}}

@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
-import fetch from 'fetch';
 import { tracked } from '@glimmer/tracking';
 
 
-// fetch('http://localhost:8080/user/1',{
+// fetch('http://localhost:8080/coins',{
 //   method: "get",
 //   mode:"cors",
 //   headers: new Headers({"Content-Type":"application/json",}),

@@ -4,20 +4,20 @@ import { inject as service } from '@ember/service';
 export default class CoinRoute extends Route {
   @service store;
 
-  // async 
-  model(params) {
-    const {
-      coin_id
-    } = params;
-    // const data  = await this.store.findAll('product');
-    // const product = data.find(({
-      // id
-    // }) => id === item_id);
-    return coin_id;
+  model(){
+    let nums = [1,2,3];
+    return this.store.findAll('collectionentity');
   }
 
-  // setupController(controller, model) {
-  //   super.setupController(controller, model);
-  //   controller.color = model.colors[0].color;
+  // async model(params) {
+  //   const {
+  //     item_id
+  //   } = params;
+  //   const data  = await fetch('http://localhost:8080/coins/6');
+  //   // const product = data.find(({
+  //   //   id
+  //   // }) => id === item_id);
+  //   // console.log(product)
+  //   return product;
   // }
 }
