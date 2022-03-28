@@ -2,6 +2,11 @@
 
 module.exports = function (environment) {
   let ENV = {
+    contentSecurityPolicyHeader: 'Content-Security-Policy',
+    contentSecurityPolicy: {
+      // ... other stuff here
+      'font-src': "'self' http://localhost:4200",
+    },
     modulePrefix: 'numislist-webapp',
     environment,
     rootURL: '/',
@@ -20,6 +25,9 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      // usingCors: true,
+      // corsWithCreds: false,
+      // apiURL: null
     },
   };
 

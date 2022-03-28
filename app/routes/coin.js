@@ -6,7 +6,11 @@ export default class CoinRoute extends Route {
 
   model(){
     let nums = [1,2,3];
-    return this.store.findAll('collectionentity');
+    // this.store.
+    // return this.store.findAll('collectionentity');
+    return this.store.findRecord('collectionentity', 2)
+
+    
   }
 
   // async model(params) {

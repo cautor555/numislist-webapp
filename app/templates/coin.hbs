@@ -3,5 +3,19 @@
 
 <h1>Coin</h1>
 
-{{#each @model as |collectionentity|}}
-<h2>{{collectionentity.date}}</h2>    {{/each}}
+<h1>{{@model.date}}</h1>
+
+
+{{!-- {{#each @model as |collectionentity|}}
+  {{#if collectionentity.inCollection}}
+    <h2>In collection</h2>
+    {{else}}
+      <h2>Not in collection</h2>
+  {{/if}}
+  <h2>{{collectionentity.date}}</h2>
+  <h2>{{collectionentity.attributes}}</h2>
+  <h2>{{collectionentity.mintMark}}</h2>
+  <h2>{{collectionentity.grade}}</h2>
+  <h2>{{collectionentity.notes}}</h2>
+  <h2>{{collectionentity.timestamp}}</h2>
+{{/each}} --}}
