@@ -1,0 +1,12 @@
+<Navbar>
+</Navbar>
+
+<h1>Collections</h1>
+
+{{!-- <LinkTo @route="coin" @model="1">Coin 1</LinkTo> --}}
+{{!-- <LinkTo @route="coin" @model="2">Coin 2</LinkTo> --}}
+
+{{#each @model as |collection|}}
+  {{!-- <h1>{{collection.collectionId}}</h1> --}}
+  <LinkTo @route="collection" @model={{collection.collectionId}}>Collection: {{collection.collectionName}}</LinkTo>
+{{/each}}

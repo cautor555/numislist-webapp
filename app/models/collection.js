@@ -1,16 +1,17 @@
 import Model, { attr } from '@ember-data/model';
 
 export default class CollectionEntity extends Model {
-  
-  @attr('number') entityId;
+
+
+  //id
   @attr('number') collectionId;
-  @attr('number') date;
+  @attr('number') userId;
+
+  @attr('string') collectionName;
   @attr('string') denomination;
   @attr('number') denominationQuantity;
-  @attr('string') attributes;
-  @attr('string') mintMark;
-  @attr('string') grade;
-  @attr('boolean') inCollection;
-  @attr('string') notes;
+  @attr('string') issuer;
+
+  @attr('string') permissions;
   @attr('date') timestamp;
 }

@@ -12,7 +12,8 @@ Router.map(function () {
 
   this.route('user');
   this.route('messages');
-  this.route('collection');
+  this.route('collection', {path: '/collection/:collection_id'});
+  this.route('collections');
   this.route('coin', {path: '/coin/:coin_id'});
   this.route('explore');
   this.route('sale');

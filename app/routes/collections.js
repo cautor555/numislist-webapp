@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-export default class CollectionRoute extends Route {
+export default class CollectionsRoute extends Route {
   @service store;
   @service session;
 
@@ -9,8 +9,7 @@ export default class CollectionRoute extends Route {
     this.session.requireAuthentication(transition, 'login');
   }
 
-  model(params) {
-    const collectionId = params.collection_id;
-    return this.store.findRecord('collection', collectionId);
+  model() {
+    return this.store.findAll('collection');
   }
 }

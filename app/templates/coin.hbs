@@ -1,21 +1,41 @@
 <Navbar>
 </Navbar>
 
-<h1>Coin</h1>
-
-<h1>{{@model.date}}</h1>
 
 
-{{!-- {{#each @model as |collectionentity|}}
-  {{#if collectionentity.inCollection}}
-    <h2>In collection</h2>
-    {{else}}
-      <h2>Not in collection</h2>
-  {{/if}}
-  <h2>{{collectionentity.date}}</h2>
-  <h2>{{collectionentity.attributes}}</h2>
-  <h2>{{collectionentity.mintMark}}</h2>
-  <h2>{{collectionentity.grade}}</h2>
-  <h2>{{collectionentity.notes}}</h2>
-  <h2>{{collectionentity.timestamp}}</h2>
-{{/each}} --}}
+
+
+<div class="coin-body">
+  
+  
+
+  <div class="coin-info">
+
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+    <label for="vehicle1">In collection</label><br>
+
+    <h2>One {{@model.denomination}}</h2>
+
+
+    <h2>{{@model.date}} {{@model.mintMark}}</h2>
+
+    <label for="attributes">Attributes: </label>
+    <h2>{{@model.attributes}}</h2>
+    <label for="notes">Notes: </label>
+    <h2>{{@model.notes}}</h2>
+
+  </div>
+
+  <div class="coin-images">
+    <img src="http://localhost:8080/coin/1/image/1" alt="Girl in a jacket">
+    <img src="http://localhost:8080/coin/1/image/1" alt="Girl in a jacket">
+    <img src="http://localhost:8080/coin/1/image/1" alt="Girl in a jacket">
+
+  </div>
+
+
+
+  {{!-- <h2>{{@model.timestamp}}</h2> --}}
+  {{!-- <h2>{{@model.grade}}</h2> --}}
+
+</div>

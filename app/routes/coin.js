@@ -3,25 +3,24 @@ import { inject as service } from '@ember/service';
 
 export default class CoinRoute extends Route {
   @service store;
+  @service session;
 
-  model(){
-    let nums = [1,2,3];
-    // this.store.
-    // return this.store.findAll('collectionentity');
-    return this.store.findRecord('collectionentity', 2)
-
-    
+  beforeModel(transition){
+    this.session.requireAuthentication(transition, 'login');
   }
 
-  // async model(params) {
-  //   const {
-  //     item_id
-  //   } = params;
-  //   const data  = await fetch('http://localhost:8080/coins/6');
-  //   // const product = data.find(({
-  //   //   id
-  //   // }) => id === item_id);
-  //   // console.log(product)
-  //   return product;
-  // }
+  model(params){
+    const coinId = params.coin_id;
+
+    return this.store.findRecord('collectionentity', coinId)
+      // "image" : this.store.findRecord();
+  
+
+
+
+
+
+    // const coinId = params.coin_id;
+    // return this.store.findRecord('collectionentity', coinId)
+  }
 }

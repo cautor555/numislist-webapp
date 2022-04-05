@@ -6,7 +6,9 @@
 <p>Use login / ok</p>
 
 <form {{action 'authenticate' on='submit'}}>
-  {{input placeholder='Login'}}<br>
-  {{input placeholder='Password' type='password'}}<br>
+  <label for="username">Login</label>
+  {{input id='username' placeholder='Enter Login' value=''}}
+  <label for="password">Password</label>
+  {{input id='password' placeholder='Enter Password' type='password' value=''}}
   <button type="submit">Login</button>
 </form>

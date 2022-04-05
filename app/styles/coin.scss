@@ -1,0 +1,36 @@
+.coin-body {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  // background-color: aqua;
+}
+
+#vehicle1 {
+  width: 40px;
+  height: 40px;
+}
+
+.coin-images {
+  img {
+    width: 200px;
+    height: 200px;
+
+    // margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  float: right;
+  border: 4px solid #555;
+  padding: 20px 10px;
+  margin: 5px;
+  padding-bottom: 100px;
+  border-radius: 2px;
+}
+
+.coin-info {
+  background-color:bisque;
+  h2 {
+    font-size: 50px;
+    font-weight: normal;
+  }
+}
