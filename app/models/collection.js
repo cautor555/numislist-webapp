@@ -1,6 +1,6 @@
 import Model, { attr } from '@ember-data/model';
 
-export default class CollectionEntity extends Model {
+export default class Collection extends Model {
 
 
   //id

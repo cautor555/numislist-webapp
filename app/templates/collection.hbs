@@ -1,9 +1,18 @@
+<Navbar>
+</Navbar>
+
 <h1>Collection</h1>
 
-<h1>{{@model.collectionId}}</h1>
-<h1>{{@model.userId}}</h1>
-<h1>{{@model.collectionName}}</h1>
-<h1>{{@model.denominationQuantity}}</h1>
-<h1>{{@model.denomination}}</h1>
-<h1>{{@model.permissions}}</h1>
-<h1>{{@model.timestamp}}</h1>
+<h1>{{@model.collection.collectionId}}</h1>
+<h1>{{@model.collection.userId}}</h1>
+<h1>{{@model.collection.collectionName}}</h1>
+<h1>{{@model.collection.denominationQuantity}}</h1>
+<h1>{{@model.collection.denomination}}</h1>
+<h1>{{@model.collection.permissions}}</h1>
+<h1>{{@model.collection.timestamp}}</h1>
+
+
+{{#each @model.coins as |coin|}}
+  {{!-- <h1>{{collection.collectionId}}</h1> --}}
+  <LinkTo @route="coin" @model={{coin.coinId}}>Coin: {{coin.coinId}}</LinkTo>
+{{/each}}

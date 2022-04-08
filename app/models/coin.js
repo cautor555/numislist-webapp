@@ -1,8 +1,8 @@
 import Model, { attr } from '@ember-data/model';
 
-export default class CollectionEntity extends Model {
+export default class Coin extends Model {
   
-  @attr('number') entityId;
+  @attr('number') coinId;
   @attr('number') collectionId;
   @attr('number') date;
   @attr('string') denomination;

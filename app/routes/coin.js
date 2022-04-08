@@ -12,7 +12,7 @@ export default class CoinRoute extends Route {
   model(params){
     const coinId = params.coin_id;
 
-    return this.store.findRecord('collectionentity', coinId)
+    return this.store.findRecord('coin', coinId)
       // "image" : this.store.findRecord();
   
 

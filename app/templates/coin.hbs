@@ -1,14 +1,8 @@
 <Navbar>
 </Navbar>
 
-
-
-
-
 <div class="coin-body">
   
-  
-
   <div class="coin-info">
 
     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
@@ -39,3 +33,11 @@
   {{!-- <h2>{{@model.grade}}</h2> --}}
 
 </div>
+
+<button {{action "deleteCoin" @model.coinId}}>delete</button>
+<button {{action "modifyCoin" @model.coinId}}>modify</button>
+
+
+
+
+{{!-- <input {{action "deleteCoin" @model.coinId}} type="text"> --}}
