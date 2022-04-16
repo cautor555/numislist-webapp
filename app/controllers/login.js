@@ -5,30 +5,36 @@ import { inject as service } from "@ember/service";
 
 
 export default class login extends Controller {
-
-  @tracked username = "";
-  @tracked password = "";
-
   @service session;
 
-  beforeModel(){
-    this.session.prohibitAuthentication('index');
-  }
+  @tracked username;
+  @tracked password;
+  @tracked error;
+
+
+  // beforeModel(){
+  //   this.session.prohibitAuthentication('index');
+  // }
 
 
   @action
-  authenticate() {
-    this.session.authenticate('authenticator:auth-manager', this.username, this.password).then(() => {
-      alert('Success! Click the top link!');
-    }, (err) => {
-      alert('Error obtaining token: ' + err.responseText);
-    });
+  authenticate(event) {
+    event.preventDefault();
 
-    // console.log(this.authManager.isAuthenticated)
+    try {
+      this.session.authenticate('authenticator:auth-manager', this.username, this.password)
+    } catch (error) {
+      this.error = err;
+      console.log(err);
+    }
+
+
+
   }
 
   @action
-  update(attr, event){
+  update(attr, event) {
+    console.log('test');
     this[attr] = event.target.value;
   }
 
@@ -56,7 +62,6 @@ export default class login extends Controller {
 //         alert('Error obtaining token: ' + err.responseText);
 //       });
 
-//       console.log(this.get('authManager').isAuthenticated)
 //     }
 //   }
 // });

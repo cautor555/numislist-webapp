@@ -1,0 +1,21 @@
+.login-form{
+  display: grid;
+  justify-content: center;
+  
+  label{
+    margin-top: 8px;
+  }
+
+  button{
+    margin-top: 10px;
+    padding: 5px 0px 5px;
+  }
+
+  .signup{
+    margin-top: 5px;
+    text-align:center;
+    .LinkTo:visited{
+      color: black;
+    }
+  }
+}

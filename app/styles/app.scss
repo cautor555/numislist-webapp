@@ -1,7 +1,28 @@
 @import './navbar';
 @import './coin';
+@import './editCoin';
+@import './collection';
+@import './login';
+@import './signup';
 
-body{
+*{
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+button{
+  border: none;
+  color: white;
+  background-color: #5386e4;
+}
+
+button:active{
+
+  background-color:aquamarine;
 }

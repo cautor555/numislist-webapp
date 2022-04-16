@@ -7,8 +7,12 @@ export default class CollectionRoute extends Route {
   @service store;
   @service session;
 
+  transition = null;
+
   beforeModel(transition) {
+    this.transition = transition;
     this.session.requireAuthentication(transition, 'login');
+    // transition.retry();
   }
 
   model(params) {

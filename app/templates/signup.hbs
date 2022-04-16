@@ -1,0 +1,12 @@
+<h1>Sign Up</h1>
+
+<form class="signup-form" {{on "submit" this.signUp}}>
+  <label for="username">Username</label>
+  <input type="text" name="username" {{on "change" (fn this.update "username")}}>
+  <label for="email">Email</label>
+  <input type="email" name="Email" {{on "change" (fn this.update "email")}}>
+
+  <label for="password">Password</label>
+  <input type="password" name="Password" {{on "change" (fn this.update "password")}}>
+  <button type="submit">Sign Up</button>
+</form>

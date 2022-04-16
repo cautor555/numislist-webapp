@@ -19,6 +19,8 @@ Router.map(function () {
   this.route('sale');
 
   this.route('login');
+  this.route('signup');
+
 
   this.route('404', { path: '/*path' });
 });

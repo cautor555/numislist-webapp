@@ -28,9 +28,9 @@ export default class CoinController extends Controller {
   @action
   modifyCoin(coinId) {
     // this.get('model').set('notes','test1');
-    // this.get('model').save();
+    // this.get('model').get(id);
 
-    this.store.find('coin', 6).then(function(record) {
+    this.store.find('coin', coinId).then(function(record) {
       record.set('notes', 'test5');
 
       record.save();
@@ -41,6 +41,39 @@ export default class CoinController extends Controller {
     //   coin.destroyRecord(); // => DELETE to /posts/2
     // });
   }
+
+
+  @action
+  checkCoin(coinId) {
+    // this.get('model').set('notes','test1');
+    // this.get('model').save();
+
+    this.store.find('coin', coinId).then(function(record) {
+      let inCollection = record.inCollection;
+
+      // inCollection = record.get('inCollection');
+      inCollection = !inCollection;
+      record.set('inCollection', inCollection);
+
+      record.save();
+    });
+
+    // store = this.get('store');
+    // this.store.findRecord('coin', coinId, { backgroundReload: false }).then(function(coin) {
+    //   coin.destroyRecord(); // => DELETE to /posts/2
+    // });
+  }
+
+  @action
+  openModal(){
+    // btn.onclick = function() {
+      let modal = document.getElementById('editCoin')
+      modal.style.display = "block";
+    
+  }
+
+
+
 
   
 }

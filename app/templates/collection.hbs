@@ -1,18 +1,36 @@
 <Navbar>
 </Navbar>
 
-<h1>Collection</h1>
-
-<h1>{{@model.collection.collectionId}}</h1>
-<h1>{{@model.collection.userId}}</h1>
+{{!-- <h1>Collection</h1> --}}
 <h1>{{@model.collection.collectionName}}</h1>
-<h1>{{@model.collection.denominationQuantity}}</h1>
-<h1>{{@model.collection.denomination}}</h1>
-<h1>{{@model.collection.permissions}}</h1>
-<h1>{{@model.collection.timestamp}}</h1>
+
+<label for="progress">Collection Progress:</label>
+<progress id="progress" value="80" max="100"> 32% </progress>
 
 
-{{#each @model.coins as |coin|}}
+<div class="collection-info">
+  {{!-- <span>Collection Name:</span> --}}
+
+  <span>Denomination:</span>
+  <h2>{{@model.collection.denominationQuantity}} {{@model.collection.denomination}}</h2>
+
+  {{!-- <h1>{{@model.collection.collectionId}}</h1> --}}
+  {{!-- <h1>{{@model.collection.userId}}</h1> --}}
+  {{!-- <h1>{{@model.collection.collectionName}}</h1> --}}
+  {{!-- <h1>{{@model.collection.denominationQuantity}}</h1> --}}
+  {{!-- <h1>{{@model.collection.denomination}}</h1> --}}
+  {{!-- <h1>{{@model.collection.permissions}}</h1> --}}
+  {{!-- <h1>{{@model.collection.timestamp}}</h1> --}}
+</div>
+
+
+<div class="coin-list">
+  {{#each @model.coins as |coin|}}
   {{!-- <h1>{{collection.collectionId}}</h1> --}}
   <LinkTo @route="coin" @model={{coin.coinId}}>Coin: {{coin.coinId}}</LinkTo>
-{{/each}}
+  {{/each}}
+</div>
+
+<div class="add-coin-button-wrapper">
+  <button type="button">Add coin</button>
+</div>

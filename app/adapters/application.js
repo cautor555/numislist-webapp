@@ -10,12 +10,11 @@ export default DS.RESTAdapter.extend({
  },
   session: inject('session'),
 
-  host: 'http://localhost:8080',
+  // host: 'http://localhost:8080',
+  host: 'http://10.252.174.190:8080',
+
 
   headers: computed('session.data.authenticated.access_token', function() {
-    // if (this.session.isAuthenticated) {
-
-      console.log(this.session.data.authenticated.access_token);
       return {
         Authorization: `Bearer ${this.session.data.authenticated.access_token}`,
       };

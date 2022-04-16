@@ -1,27 +1,24 @@
-import Ember from 'ember';
-import { bool } from '@ember/object/computed';
 import Base from 'ember-simple-auth/authenticators/base' 
 
-
 export default Base.extend({
+  // host: 'http://10.252.174.190:8080/login',
+  // host: 'http://localhost:8080/login',
+
+
   async restore(data){
-    // console.log(data.access_token);
 
     let {token} = data.access_token;
-    // if(token){
-    console.log(token);
-
-    return data;
+    // if(token != null){
+      return data;
     // }
     // else{
-      // throw 'no valid session data';
+    //   throw 'no valid session data';
     // }
-    
   },
 
   async authenticate(login, password) {
 
-    let response = await fetch('http://localhost:8080/login', {
+    let response = await fetch('http://10.252.174.190:8080/login', {
       method: "post",
       mode: "cors",
       body: new URLSearchParams({
@@ -31,16 +28,14 @@ export default Base.extend({
     });
 
     if(response.ok){
-      console.log(true);
       return response.json();
     }
-    // else{
-
-    // }
+    else{
+      let error = await response.status;
+      throw new Error(error);
+    }
 },
 
-  invalidate(data) {
-  this.set('accessToken', null);
-},
+  async invalidate(data) {},
 
 });

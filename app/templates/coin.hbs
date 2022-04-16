@@ -2,11 +2,14 @@
 </Navbar>
 
 <div class="coin-body">
-  
+
   <div class="coin-info">
 
-    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-    <label for="vehicle1">In collection</label><br>
+  
+    <Input id="coin-checkbox" @type="checkbox" @checked={{@model.inCollection}} {{on "input" (fn this.checkCoin @model.coinId) }}/>
+    {{!-- <Input id="coin-checkbox" @type="checkbox" @checked={{@model.inCollection}} {{action "checkCoin" @model.coinId}}/> --}}
+
+    <label for="x">In collection</label><br>
 
     <h2>One {{@model.denomination}}</h2>
 
@@ -21,9 +24,9 @@
   </div>
 
   <div class="coin-images">
-    <img src="http://localhost:8080/coin/1/image/1" alt="Girl in a jacket">
-    <img src="http://localhost:8080/coin/1/image/1" alt="Girl in a jacket">
-    <img src="http://localhost:8080/coin/1/image/1" alt="Girl in a jacket">
+    <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
+    <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
+    <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
 
   </div>
 
@@ -36,7 +39,9 @@
 
 <button {{action "deleteCoin" @model.coinId}}>delete</button>
 <button {{action "modifyCoin" @model.coinId}}>modify</button>
+<button {{action "openModal" @model.coinId}}>edit</button>
 
+<EditCoin></EditCoin>
 
 
 
