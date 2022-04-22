@@ -1,7 +1,6 @@
 import Model, { attr } from '@ember-data/model';
 
 export default class Coin extends Model {
-  
   @attr('number') coinId;
   @attr('number') collectionId;
   @attr('number') date;

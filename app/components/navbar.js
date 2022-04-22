@@ -7,7 +7,6 @@ export default class NavbarComponent extends Component {
 
   @action
   logout(){
-    console.log("test");
     this.session.invalidate();
   }
 

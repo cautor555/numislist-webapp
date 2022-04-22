@@ -5,7 +5,9 @@
 <h1>{{@model.collection.collectionName}}</h1>
 
 <label for="progress">Collection Progress:</label>
-<progress id="progress" value="80" max="100"> 32% </progress>
+<progress id="progress" value={{progress @model.coins}} max={{@model.coins.length}}></progress>
+
+
 
 
 <div class="collection-info">

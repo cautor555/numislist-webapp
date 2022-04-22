@@ -1,19 +1,25 @@
-@import './navbar';
+// routes
+@import './index';
 @import './coin';
 @import './editCoin';
 @import './collection';
 @import './login';
 @import './signup';
 
+// components
+@import './navbar';
+
 *{
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-h1{
   font-weight: 200;
   font-style: normal;
 }
+
+// h1{
+//   font-weight: 200;
+//   font-style: normal;
+// }
 
 
 button{

@@ -18,6 +18,8 @@ export default class CollectionRoute extends Route {
   model(params) {
     // model() {
     const collectionId = params.collection_id;
+    // this.store.unloadAll('coin');
+
 
     return Ember.RSVP.hash({
       // collections: this.store.findAll('collection'),

@@ -5,5 +5,4 @@ export default class UserModel extends Model {
   @attr('string') username;
   @attr('string') email;
   @attr('date') joinDate;
-
 }

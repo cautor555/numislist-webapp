@@ -34,7 +34,6 @@ export default class login extends Controller {
 
   @action
   update(attr, event) {
-    console.log('test');
     this[attr] = event.target.value;
   }
 

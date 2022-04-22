@@ -1,51 +1,122 @@
 .coin-body {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  // background-color: aqua;
-}
+  grid-template-columns: 1fr 8fr 5fr;
+  margin-top: 10px;
 
-#coin-checkbox {
-  width: 40px;
-  height: 40px;
-}
+  .like-checkbox-container {
+    display: inline-block;
+    text-align: center;
 
-.coin-images {
-  img {
-    width: 200px;
-    height: 200px;
+    #coin-checkbox {
+      width: 64px;
+      height: 64px;
+    }
 
-    // margin: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+    button {
+      background-color: transparent;
+      margin: 20px 20px 5px;
+    }
   }
-  float: right;
-  border: 4px solid #555;
-  padding: 20px 10px;
-  margin: 5px;
-  padding-bottom: 100px;
-  border-radius: 2px;
-}
 
-.coin-info {
-  background-color:bisque;
-  h2 {
-    font-size: 50px;
-    font-weight: normal;
+  .primary-coin-info h1 {
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  .primary-coin-info h1:last-child {
+    margin-left: 16px;
+  }
+
+  .edit-delete-container button {
+    display: inline-block;
+  }
+
+  .comments {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .comment {
+      width: 90%;
+      border-radius: 5px;
+      padding: 0px;
+      margin: 10px 0px;
+      border-width: 2px;
+      border-color: black;
+      // background-color: aqua;
+      border-style: solid;
+    }
+
+    .new-comment .submit-comment-button {
+      // text-align: center;
+      display: flex;
+      width: 100px;
+      height: 25px;
+
+      // justify-content: right;
+      // align-items: right;
+    }
+
+    .new-comment Textarea {
+      width: 90%;
+      height: 20px;
+      padding: 0px;
+      margin: 10px 0px;
+      // overflow-wrap: break-word;
+      resize: none;
+      outline: 0;
+      border-width: 0 0 2px;
+      border-color: blue;
+    }
+  }
+
+  .coin-image-container {
+    img {
+      width: 200px;
+      height: 200px;
+
+      // margin: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    float: right;
+    border: 4px solid #555;
+    padding: 20px 10px;
+    margin: 5px;
+    padding-bottom: 100px;
+    border-radius: 2px;
   }
 }
 
+// .coin-body {
+//   display: grid;
+//   grid-template-columns: 3fr 1fr;
+//   // background-color: aqua;
+// }
 
-#editCoin {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+// #coin-checkbox {
+//   width: 40px;
+//   height: 40px;
+// }
+
+// .coin-info {
+//   background-color:bisque;
+//   h2 {
+//     font-size: 50px;
+//     font-weight: normal;
+//   }
+// }
+
+// #editCoin {
+//   display: none; /* Hidden by default */
+//   position: fixed; /* Stay in place */
+//   z-index: 1; /* Sit on top */
+//   padding-top: 100px; /* Location of the box */
+//   left: 0;
+//   top: 0;
+//   width: 100%; /* Full width */
+//   height: 100%; /* Full height */
+//   overflow: auto; /* Enable scroll if needed */
+//   background-color: rgb(0,0,0); /* Fallback color */
+//   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+// }

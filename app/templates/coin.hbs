@@ -1,48 +1,113 @@
+{{!-- {{page-title "Coin"}} --}}
+
 <Navbar>
 </Navbar>
 
+
 <div class="coin-body">
 
-  <div class="coin-info">
+  <div class="like-checkbox-container">
+    <div class="coin-checkbox-wrapper">
+      <Input id="coin-checkbox" @type="checkbox" @checked={{@model.coin.inCollection}} {{on "input" (fn this.checkCoin
+        @model.coin.coinId) }} />
+    </div>
 
-  
-    <Input id="coin-checkbox" @type="checkbox" @checked={{@model.inCollection}} {{on "input" (fn this.checkCoin @model.coinId) }}/>
-    {{!-- <Input id="coin-checkbox" @type="checkbox" @checked={{@model.inCollection}} {{action "checkCoin" @model.coinId}}/> --}}
+    <button {{action "like" @model.user.userId @model.coin.coinId (isLiked @model.likes @model.user.userId)}}>
+      {{#if (isLiked @model.likes @model.user.userId) }}
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="64"
+        height="64" viewBox="0 0 256 256" xml:space="preserve">
+        <desc>Created with Fabric.js 1.7.22</desc>
+        <defs>
+        </defs>
+        <g transform="translate(128 128) scale(0.72 0.72)" style="">
+          <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+            transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
+            <path
+              d="M 7.486 13.502 c 9.982 -9.982 26.165 -9.982 36.147 0 L 45 14.869 l 0 0 c 6.895 22.882 6.259 47.092 0 72.294 L 26.927 69.089 c 0 0 0 0 0 0 l -19.44 -19.44 C -2.495 39.667 -2.495 23.484 7.486 13.502 z"
+              style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,50,79); fill-rule: nonzero; opacity: 1;"
+              transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+            <path
+              d="M 82.514 13.502 c -9.982 -9.982 -26.165 -9.982 -36.147 0 L 45 14.869 l 0 0 v 72.294 l 18.073 -18.073 c 0 0 0 0 0 0 l 19.44 -19.44 C 92.495 39.667 92.495 23.484 82.514 13.502 z"
+              style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,50,79); fill-rule: nonzero; opacity: 1;"
+              transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+          </g>
+        </g>
+      </svg>
+      {{else}}
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="64"
+        height="64" viewBox="0 0 256 256" xml:space="preserve">
+        <desc>Created with Fabric.js 1.7.22</desc>
+        <defs>
+        </defs>
+        <g transform="translate(128 128) scale(0.72 0.72)" style="">
+          <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+            transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
+            <path
+              d="M 64.44 12.016 c 5.225 0 10.136 2.035 13.831 5.729 c 7.626 7.626 7.626 20.035 0 27.662 l -19.44 19.44 L 45 78.677 L 31.169 64.846 l -19.44 -19.44 c -7.626 -7.626 -7.626 -20.035 0 -27.662 c 3.694 -3.694 8.606 -5.729 13.831 -5.729 c 5.225 0 10.136 2.035 13.831 5.729 l 1.367 1.367 L 45 23.354 l 4.242 -4.242 l 1.367 -1.367 C 54.304 14.05 59.216 12.016 64.44 12.016 M 64.44 6.016 c -6.541 0 -13.083 2.495 -18.073 7.486 L 45 14.869 l 0 0 l 0 0 l -1.367 -1.367 C 38.642 8.511 32.101 6.016 25.56 6.016 S 12.477 8.511 7.486 13.502 c -9.982 9.982 -9.982 26.165 0 36.147 l 19.44 19.44 c 0 0 0 0 0.001 0 L 45 87.163 l 18.073 -18.073 c 0 0 0 0 0 0 l 19.44 -19.44 c 9.982 -9.982 9.982 -26.165 0 -36.147 C 77.523 8.511 70.982 6.016 64.44 6.016 L 64.44 6.016 z"
+              style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+              transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+          </g>
+        </g>
+      </svg>
+      {{/if}}
+    </button>
 
-    <label for="x">In collection</label><br>
+    <h3>{{@model.likes.length}} Likes</h3>
 
-    <h2>One {{@model.denomination}}</h2>
+  </div>
 
+  <div class="coin-info-container">
 
-    <h2>{{@model.date}} {{@model.mintMark}}</h2>
+    <div class="primary-coin-info">
+      <h1>{{@model.coin.date}}</h1>
+      <h1>{{@model.coin.mintMark}}</h1>
+      <h1>{{@model.coin.attributes}}</h1>
+    </div>
 
-    <label for="attributes">Attributes: </label>
-    <h2>{{@model.attributes}}</h2>
     <label for="notes">Notes: </label>
-    <h2>{{@model.notes}}</h2>
+    <h2>{{@model.coin.notes}}</h2>
+
+    <label for="grade">Grade:</label>
+    <h2>AU50</h2>
+
+    <div class="edit-delete-container">
+      <button {{action "openModal" @model.coin.coinId}}>edit</button>
+      <button {{action "deleteCoin" @model.coin.coinId}}>delete</button>
+    </div>
+
+    <a href="https://www.ebay.com/" target="_blank">Find on Ebay↗</a>
+
+    <div class="comments">
+      <h2>Comments</h2>
+
+      <form class="new-comment">
+        <Textarea  @cols="80" name="comment-text" @rows="1" {{on "change" (fn this.update "commentText")}} @value="{{this.commentText}}"/>
+
+        <div class="submit-comment-button">
+          {{!-- <LinkTo @route="signup" class="LinkTo">Sign Up</LinkTo> --}}
+          <button {{action "addComment" @model.coin.coinId @model.user.userId}}>Comment</button>
+        </div>
+
+      </form>
+
+      {{#each @model.comments as |comment|}}
+      <div class="comment">
+        <h3 class="comment-content">{{comment.comment}}</h3>
+        <h4 class="comment-username">{{comment.username}}</h4>
+        <h5 class="comment-date">{{date comment.timestamp}}</h5>
+      </div>
+      {{/each}}
+
+    </div>
 
   </div>
 
-  <div class="coin-images">
+  <div class="coin-image-container">
     <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
     <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
     <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
-
   </div>
-
-
-
-  {{!-- <h2>{{@model.timestamp}}</h2> --}}
-  {{!-- <h2>{{@model.grade}}</h2> --}}
 
 </div>
 
-<button {{action "deleteCoin" @model.coinId}}>delete</button>
-<button {{action "modifyCoin" @model.coinId}}>modify</button>
-<button {{action "openModal" @model.coinId}}>edit</button>
-
-<EditCoin></EditCoin>
-
-
-
-{{!-- <input {{action "deleteCoin" @model.coinId}} type="text"> --}}
+{{!-- <EditCoin></EditCoin> --}}
