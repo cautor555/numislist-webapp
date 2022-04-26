@@ -1,8 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import Ember from 'ember';
-import Enumerable from '@ember/enumerable';
-
 
 export default class CoinRoute extends Route {
   @service store;
@@ -20,22 +18,18 @@ export default class CoinRoute extends Route {
 
   model(params){
     this.store.unloadAll('like');
-    // this.store.unloadAll('comment');
 
     const coinId = params.coin_id;
 
-    this.store.createRecord('comment');
     this.store.unloadAll('comment');
     
 
-    // console.log(this.store.findRecord('coin', coinId));
-
     return Ember.RSVP.hash({
       coin: this.store.findRecord('coin', coinId),
+      // coin: this.store.find('coin', coinId),
       likes: this.store.findAll('like', { adapterOptions: { prefix: coinId } }),
-      comments: this.store.findAll('comment', { adapterOptions: { prefix: coinId } }),
+      comments: this.store.findAll('comment', { adapterOptions: { prefix: coinId }}),
       user: this.store.queryRecord('user',{}),
-      // liked: true
     });
   }
 

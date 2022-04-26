@@ -1,0 +1,96 @@
+.message-body {
+  // .user-info {
+  // }
+
+  .message-scroll {
+    margin-bottom: 120px;
+    width: 100%;
+    top: 120px;
+    bottom: 0;
+
+    overflow: auto;
+    overflow: auto;
+    position: absolute;
+
+    .this-user,
+    .other-user {
+      display: flex;
+
+      .message-content {
+        display: inline-block;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        max-width: 100%;
+      }
+
+      .message-container {
+        text-align: right;
+
+        border-style: solid;
+        border-radius: 20px;
+        border-color: #cccccc;
+        border-width: 1px;
+
+        padding: 20px;
+        margin: 10px;
+        max-width: 250px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .this-user {
+      justify-content: right;
+      .message-content,
+      .timestamp {
+        text-align: right;
+      }
+      .message-container {
+        width: 30%;
+        background-color: #cccccc;
+      }
+    }
+    .other-user {
+      justify-content: left;
+      .message-content,
+      .timestamp {
+        text-align: left;
+      }
+      .message-container {
+        width: 30%;
+      }
+    }
+  }
+
+  .new-message {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 30px;
+    padding-bottom: 20px;
+
+    background-color: white;
+
+    .new-message-form {
+      Textarea {
+        width: 60%;
+        height: 20px;
+        padding: 0px;
+
+        resize: none;
+        outline: 0;
+        border-width: 0 0 2px;
+        border-color: #333;
+      }
+
+      .submit-comment-button {
+        button {
+          width: 60px;
+          height: 30px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

@@ -12,6 +12,7 @@ Router.map(function () {
 
   this.route('user');
   this.route('messages');
+  this.route('message', {path: '/message/:user_id'});
   this.route('collection', {path: '/collection/:collection_id'});
   this.route('collections');
   this.route('coin', {path: '/coin/:coin_id'});

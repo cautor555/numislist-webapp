@@ -7,29 +7,66 @@
     display: inline-block;
     text-align: center;
 
-    #coin-checkbox {
+    .coin-checkbox {
       width: 64px;
       height: 64px;
     }
 
-    button {
+    .like-button {
       background-color: transparent;
       margin: 20px 20px 5px;
     }
   }
 
-  .primary-coin-info h1 {
-    display: inline-block;
-    margin-right: 4px;
+  .coin-info-container {
+    .primary-coin-info {
+    }
+
+    .secondary-coin-info {
+    }
+
+    .ebay-link{
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .edit-delete-container {
+      padding-top: 5px;
+      padding-bottom: 20px;
+
+      button {
+        padding: 0px;
+        display: inline;
+        color: black;
+        font-size: 16px;
+        background-color: transparent;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    
+
+
+
+
+
+    .primary-coin-info h1 {
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .primary-coin-info h1:last-child {
+      margin-left: 16px;
+    }
   }
 
-  .primary-coin-info h1:last-child {
-    margin-left: 16px;
-  }
+  
 
-  .edit-delete-container button {
-    display: inline-block;
-  }
+
+
+
+
 
   .comments {
     padding-top: 20px;
@@ -61,11 +98,10 @@
       height: 20px;
       padding: 0px;
       margin: 10px 0px;
-      // overflow-wrap: break-word;
       resize: none;
       outline: 0;
       border-width: 0 0 2px;
-      border-color: blue;
+      border-color: #333;
     }
   }
 

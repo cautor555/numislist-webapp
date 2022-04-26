@@ -1,4 +1,4 @@
-{{!-- {{page-title "Coin"}} --}}
+{{page-title @model.coin.date " " @model.coin.mintMark}}
 
 <Navbar>
 </Navbar>
@@ -7,12 +7,11 @@
 <div class="coin-body">
 
   <div class="like-checkbox-container">
-    <div class="coin-checkbox-wrapper">
-      <Input id="coin-checkbox" @type="checkbox" @checked={{@model.coin.inCollection}} {{on "input" (fn this.checkCoin
-        @model.coin.coinId) }} />
-    </div>
+    <Input class="coin-checkbox" @type="checkbox" @checked={{@model.coin.inCollection}} {{on "input" (fn this.checkCoin
+      @model.coin.coinId) }} />
 
-    <button {{action "like" @model.user.userId @model.coin.coinId (isLiked @model.likes @model.user.userId)}}>
+    <button class="like-button" {{action "like" @model.user.userId @model.coin.coinId (isLiked @model.likes
+      @model.user.userId)}}>
       {{#if (isLiked @model.likes @model.user.userId) }}
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="64"
         height="64" viewBox="0 0 256 256" xml:space="preserve">
@@ -52,7 +51,11 @@
       {{/if}}
     </button>
 
+    {{#if (eq @model.likes.length 1)}}
+    <h3>{{@model.likes.length}} Like</h3>
+    {{else}}
     <h3>{{@model.likes.length}} Likes</h3>
+    {{/if}}
 
   </div>
 
@@ -64,24 +67,35 @@
       <h1>{{@model.coin.attributes}}</h1>
     </div>
 
-    <label for="notes">Notes: </label>
-    <h2>{{@model.coin.notes}}</h2>
+    <div class="secondary-coin-info">
+      <label for="notes">Notes: </label>
+      <h2>{{@model.coin.notes}}</h2>
 
-    <label for="grade">Grade:</label>
-    <h2>AU50</h2>
-
-    <div class="edit-delete-container">
-      <button {{action "openModal" @model.coin.coinId}}>edit</button>
-      <button {{action "deleteCoin" @model.coin.coinId}}>delete</button>
+      {{#if @model.coin.grade }}
+      <label for="grade">Grade:</label>
+      <h2>{{@model.coin.grade}}</h2>
+      {{/if}}
     </div>
 
-    <a href="https://www.ebay.com/" target="_blank">Find on Ebay↗</a>
+
+    <div class="edit-delete-container">
+      <button {{action "openModal" @model.coin.coinId}}>Edit</button>
+      <button {{action "deleteCoin" @model.coin.coinId @model.coin.collectionId}}>Delete</button>
+    </div>
+
+    <div class="ebay-link">
+      <a href="https://www.ebay.com/sch/11116/i.html?_from=R40&_nkw={{@model.coin.date}}+{{@model.coin.mintMark}}+{{@model.coin.denomination}}&_oac=1"
+        target="_blank">Find on Ebay↗</a>
+    </div>
+
+
 
     <div class="comments">
       <h2>Comments</h2>
 
       <form class="new-comment">
-        <Textarea  @cols="80" name="comment-text" @rows="1" {{on "change" (fn this.update "commentText")}} @value="{{this.commentText}}"/>
+        <Textarea @cols="80" name="comment-text" @rows="1" {{on "change" (fn this.update "commentText" )}}
+          @value="{{this.commentText}}" />
 
         <div class="submit-comment-button">
           {{!-- <LinkTo @route="signup" class="LinkTo">Sign Up</LinkTo> --}}
@@ -94,13 +108,31 @@
       <div class="comment">
         <h3 class="comment-content">{{comment.comment}}</h3>
         <h4 class="comment-username">{{comment.username}}</h4>
-        <h5 class="comment-date">{{date comment.timestamp}}</h5>
+        {{!-- <h5 class="comment-date">{{date comment.timestamp}}</h5> --}}
+        {{#if comment.timestamp}}
+        <h4>{{date comment.timestamp}}</h4>
+        {{else}}
+        {{/if}}
       </div>
       {{/each}}
 
     </div>
 
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <div class="coin-image-container">
     <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">

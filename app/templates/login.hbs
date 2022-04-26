@@ -6,11 +6,9 @@
   <label for="password">Password</label>
   <input type="password" name="Password" {{on "change" (fn this.update "password")}}>
   <button type="submit">Login</button>
-{{!-- <button type="button">Sign Up</button> --}}
   <div class="signup">
     <LinkTo @route="signup" class="LinkTo">Sign Up</LinkTo>
   </div>
-
 
 </form>
 

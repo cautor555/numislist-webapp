@@ -3,19 +3,12 @@ import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 
-
 export default class login extends Controller {
   @service session;
 
   @tracked username;
   @tracked password;
   @tracked error;
-
-
-  // beforeModel(){
-  //   this.session.prohibitAuthentication('index');
-  // }
-
 
   @action
   authenticate(event) {
@@ -27,21 +20,13 @@ export default class login extends Controller {
       this.error = err;
       console.log(err);
     }
-
-
-
   }
 
   @action
   update(attr, event) {
     this[attr] = event.target.value;
   }
-
 }
-
-
-
-
 
 // import Controller from '@ember/controller';
 // import Ember from 'ember';

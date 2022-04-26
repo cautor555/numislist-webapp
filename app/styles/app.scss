@@ -1,13 +1,17 @@
 // routes
 @import './index';
 @import './coin';
-@import './editCoin';
 @import './collection';
 @import './login';
 @import './signup';
+@import './messages';
+@import './message';
+
 
 // components
 @import './navbar';
+@import './editCoin';
+
 
 *{
   margin: 0px;
@@ -16,10 +20,28 @@
   font-style: normal;
 }
 
-// h1{
-//   font-weight: 200;
-//   font-style: normal;
+// div[class$="body"] {
+//   margin-top: 21px;
 // }
+
+h1{
+  font-size: 36px;
+}
+h2{
+  font-size: 24px;
+}
+h3{
+  font-size: 16px;
+}
+h4{
+  font-size: 12px;
+}
+
+.timestamp{
+  color: rgba(0, 0, 0, .5);
+}
+
+
 
 
 button{
@@ -32,3 +54,32 @@ button:active{
 
   background-color:aquamarine;
 }
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+
+// .sticky-nav{
+//   position: fixed;
+//    top: 0px;
+// }

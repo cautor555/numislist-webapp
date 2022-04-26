@@ -1,8 +1,5 @@
 <div class="menu-container">
-  <ul class="menu">
-    <li>
-      <LinkTo @route="user" class="button">User</LinkTo>
-    </li>
+  <ul class="menu">    
     <li>
       <LinkTo @route="messages" class="button">Messages</LinkTo>
     </li>
@@ -15,8 +12,20 @@
     <li>
       <LinkTo @route="sale" class="button">Sale</LinkTo>
     </li>
-    <li class="logout">
-      <button type="button" {{on "click" this.logout}}>Logout</button>
+    
+    <li class="user">
+      <LinkTo @route="user" class="button">User</LinkTo>
     </li>
+
+    {{#if this.isAuthenticated}}
+      <li class="logout">
+        <button type="button" {{on "click" this.logout}}>Sign out</button>
+      </li>
+    {{else}}
+      <li class="login">
+        <LinkTo @route="login" class="button">Sign in</LinkTo>
+      </li>
+
+    {{/if}}
   </ul>
 </div>

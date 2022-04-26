@@ -2,65 +2,39 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import Ember from 'ember';
-
 
 export default class CoinController extends Controller {
   @service store;
   @tracked commentText = '';
 
-
   @action
-  deleteCoin(coinId) {
-    // store = this.get('store');
+  deleteCoin(coinId, collectionId) {
     this.store.findRecord('coin', coinId, { backgroundReload: false }).then(function (coin) {
-      coin.destroyRecord(); // => DELETE to /posts/2
+      coin.destroyRecord();
     });
+    this.transitionToRoute('collection',collectionId);
   }
-
-  // @action
-  // modifyCoin(coinId) {
-  //   // store = this.get('store');
-  //   this.store.findRecord('coin', coinId, { backgroundReload: false }).then(function(coin) {
-  //     coin.destroyRecord(); // => DELETE to /posts/2
-  //   });
-  // }
 
   @action
   modifyCoin(coinId) {
-    // this.get('model').set('notes','test1');
-    // this.get('model').get(id);
-
     this.store.find('coin', coinId).then(function (record) {
-      record.set('notes', 'test5');
+      record.set('id', record.commentId);
 
       record.save();
     });
-
-    // store = this.get('store');
-    // this.store.findRecord('coin', coinId, { backgroundReload: false }).then(function(coin) {
-    //   coin.destroyRecord(); // => DELETE to /posts/2
-    // });
   }
-
 
   @action
   checkCoin(coinId) {
-
     this.store.find('coin', coinId).then(function (record) {
       let inCollection = record.inCollection;
 
-      // inCollection = record.get('inCollection');
       inCollection = !inCollection;
       record.set('inCollection', inCollection);
 
       record.save();
     });
 
-    // store = this.get('store');
-    // this.store.findRecord('coin', coinId, { backgroundReload: false }).then(function(coin) {
-    //   coin.destroyRecord(); // => DELETE to /posts/2
-    // });
   }
 
   @action
@@ -78,20 +52,10 @@ export default class CoinController extends Controller {
       comment: this.commentText,
     });
 
-    comment.save({ adapterOptions: { prefix: coinId }});//.then(function(save){
-      // console.log(comment.get('commentId'))
-      // record.set('likedByViewer', liked);
-      // record.save();
+    comment.save({ adapterOptions: { prefix: coinId }});
 
-    //});
-
-    // selection.save().then(function(savedSelection){
-      // console.log( savedSelection.get('id') );
-    // });
     this.commentText = '';
   }
-
-  
 
   @action
   like(userId, coinId, likedByViewer) {
@@ -101,13 +65,8 @@ export default class CoinController extends Controller {
       let like = this.store.findRecord('like', userId, { backgroundReload: false }).then(function(like) {
         
         like.destroyRecord({ adapterOptions: { prefix: coinId }});
-        // like.save();
-        // this.store.ul
       });
-      console.log(like);
       liked = false;
-
-      // this.store.unloadRecord(like);
     }
     else{
       let like = this.store.createRecord('like', {

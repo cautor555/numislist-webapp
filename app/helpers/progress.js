@@ -9,7 +9,6 @@ function progress([coins]) {
     }
   });
 
-  console.log(coinCount)
   return coinCount
 }
 

@@ -2,8 +2,6 @@ import Model, { attr } from '@ember-data/model';
 
 export default class Collection extends Model {
 
-
-  //id
   @attr('number') collectionId;
   @attr('number') userId;
 

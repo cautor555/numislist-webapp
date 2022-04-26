@@ -1,0 +1,46 @@
+<Navbar class="nav">
+</Navbar>
+
+<div class="message-body">
+  <div class="user-info">
+    <h1>{{@model.otherUser.username}}</h1>
+  </div>
+
+  <div class="message-scroll" id="scroll">
+    {{#each @model.messages as |message index|}}
+
+    <div class={{fromUser @model.user.userId message.fromUserId}}>
+
+      <div class="message-container">
+        <span class="message-content">{{message.messageContent}}</span>
+
+        {{#if message.timestamp}}
+        <h4 class="timestamp">{{date message.timestamp}}</h4>
+          {{#if (eq index (sub @model.messages.length 1))}}
+          <script>
+            document.getElementById("scroll").scrollTop = document.getElementById("scroll").scrollHeight; 
+          </script>
+          {{/if}}
+        {{else}}
+        {{/if}}
+
+      </div>
+    </div>
+
+    {{/each}}
+
+  </div>
+
+  <div class="new-message">
+    <form class="new-message-form">
+      <Textarea @cols="80" name="comment-text" @rows="1" {{on "change" (fn this.update "messageContent" )}}
+        @value={{this.messageText}} />
+
+      <div class="submit-comment-button">
+        <button {{action "sendMessage" @model.user.userId @model.otherUser.userId @model.messages.length}}>Send</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
