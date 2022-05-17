@@ -1,0 +1,42 @@
+.explore-body{
+  display: grid;
+  grid-template-columns: auto auto;
+
+  h1{
+    margin-bottom: 20px;
+  }
+
+  h2{
+    margin-bottom: 10px;
+
+  }
+
+  a{
+    color: black;
+  }
+}
+
+.collection-info *{
+  display: inline;
+}
+
+.coin-link, .collection-link{
+  text-decoration: none;
+}
+
+.coin-list{
+  display:flow-root;
+
+  
+
+  
+  h2{
+    display: inline-block;
+    margin-right: 4px; 
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}

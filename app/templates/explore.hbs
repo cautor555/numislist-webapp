@@ -1,4 +1,48 @@
 <Navbar>
 </Navbar>
 
-<h1>Explore</h1>
+<div class="explore-body">
+
+  <div class="top-liked">
+    <h1>Top liked coins</h1>
+
+    <div class="coin-list">
+      {{#each @model.coins as |coin|}}
+      <ol>
+        <LinkTo @route="coin" @model={{coin.coinId}} class="coin-link">
+          <div class="coin-link-info">
+
+            <h2>{{coin.date}}</h2>
+            <h2>{{coin.mintMark}}</h2>
+            <h2>{{coin.attributes}}</h2>
+
+          </div>
+        </LinkTo>
+      </ol>
+      {{/each}}
+    </div>
+
+  </div>
+
+  <div class="most-copied">
+
+    <h1>Top copied collections</h1>
+
+    <div class="collection-list">
+      {{#each @model.collections as |collection|}}
+      <ol>
+        <LinkTo @route="collection" @model={{collection.collectionId}} class="collection-link">
+          <div class="collection-link-info">
+
+            <h2>{{collection.collectionName}}</h2>
+            <h2>{{collection.mintMark}}</h2>
+            <h2>{{collection.attributes}}</h2>
+
+          </div>
+        </LinkTo>
+      </ol>
+      {{/each}}
+    </div>
+  </div>
+
+</div>

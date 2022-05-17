@@ -1,32 +1,26 @@
 import DS from "ember-data";
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
+import Ember from 'ember';
+
 
 export default DS.RESTAdapter.extend({
-  namespace: 'coin/',
   host: 'http://10.252.174.190:8080',
   session: inject('session'),
 
-  findRecord: function(store, type, id, snapshot) {
-    if (snapshot.adapterOptions) {
-      let url = `http://10.252.174.190:8080/coin/${snapshot.adapterOptions.prefix}/comment`;
-      let query = {
-      };
-
-      return this.ajax(url, 'GET', { data: query });
-    } else {
-      return this._super(...arguments);
-    }
+  pathForType: function (type) {
+    return type;
   },
 
   findAll: function (store, type, id, snapshot) {
 
     if (snapshot.adapterOptions) {
-      let url = this.buildURL(type.modelName, id, snapshot, 'findRecord');
+      let url = '';
+      if (snapshot.adapterOptions.top) {
+        url = `http://10.252.174.190:8080/collections/top`
+      }
       let query = {
       };
-      const myArray = url.split("coin/");
-      url = myArray[0] + this.namespace + snapshot.adapterOptions.prefix + myArray[1] + '?order=NEWEST';
 
       return this.ajax(url, 'GET', { data: query });
     } else {
@@ -34,14 +28,17 @@ export default DS.RESTAdapter.extend({
     }
   },
 
-  createRecord : function(store, type, snapshot) {
+  createRecord: function (store, type, snapshot) {
     if (snapshot.adapterOptions) {
+      let url = `http://10.252.174.190:8080/collection/${snapshot.adapterOptions.id}/copy`;
+
+      return this.ajax(url, 'POST', { data: {} });
+    }
+    else {
       let data = this.serialize(snapshot, { includeId: true });
-      let url = `http://10.252.174.190:8080/coin/${snapshot.adapterOptions.prefix}/comment`;
+      let url = `http://10.252.174.190:8080/collection`;
 
       return this.ajax(url, 'POST', { data: data });
-    } else {
-      return this._super(...arguments);
     }
   },
 
@@ -51,6 +48,4 @@ export default DS.RESTAdapter.extend({
     };
   }),
 
-
-
-});
+})

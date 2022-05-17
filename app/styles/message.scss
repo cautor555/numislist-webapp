@@ -1,7 +1,4 @@
 .message-body {
-  // .user-info {
-  // }
-
   .message-scroll {
     margin-bottom: 120px;
     width: 100%;
@@ -24,8 +21,6 @@
       }
 
       .message-container {
-        text-align: right;
-
         border-style: solid;
         border-radius: 20px;
         border-color: #cccccc;
@@ -47,6 +42,7 @@
       .message-container {
         width: 30%;
         background-color: #cccccc;
+        text-align: right;
       }
     }
     .other-user {

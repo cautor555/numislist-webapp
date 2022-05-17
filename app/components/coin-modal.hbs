@@ -1,0 +1,68 @@
+<div id="cm" class="coin-modal">
+
+  <div class="coin-modal-content" id="coin-modal-content">
+
+    {{#if @model.coin}}
+    <h2>Modify Coin</h2>
+
+    {{else}}
+    <h2>New Coin</h2>
+    {{/if}}
+
+    <form class="add-coin-form" onsubmit="return false" {{on "submit" this.save }}>
+      <div class="inputs">
+
+        <label for="date">Date:</label>
+        <input value={{@model.coin.date}} class="date-input" type="number" min="0" max="2023" name="date" {{on "change"
+          (fn this.update "date" )}} required>
+
+        <label for="mintmark">Mint Mark:</label>
+        <select class="mintmark-select" name="mintmark" id="mintmark" {{on "change" (fn this.update "mintMark" )}}
+          required>
+          <option value="" selected disabled hidden>Choose here</option>
+          {{#each @model.mintMarks as |enum|}}
+          {{#if (eq enum.enumId "mintMark")}}
+          {{#if (eq enum.enumValue @model.coin.mintMark)}}
+          <option value={{enum.enumValue}} selected>{{enum.enumValue}}</option>
+          {{else}}
+          <option value={{enum.enumValue}}>{{enum.enumValue}}</option>
+          {{/if}}
+          {{/if}}
+          {{/each}}
+        </select>
+
+        <label for="attributes">Attributes:</label>
+        <input type="text" name="attributes" value={{@model.coin.attributes}} {{on "change" (fn this.update "attributes"
+          )}}>
+
+        <label for="notes">Notes:</label>
+        <input type="text" name="notes" value={{@model.coin.notes}} {{on "change" (fn this.update "notes" )}}>
+
+        <label for="grade">Grade:</label>
+        <select class="grade-select" name="grade" id="mintmark" {{on "change" (fn this.update "grade" )}}>
+          {{#each @model.grades as |enum|}}
+          {{#if (eq enum.enumId "grade")}}
+          {{#if (eq enum.enumId @model.coin.grade)}}
+          <option value={{enum.enumValue}}>{{enum.enumValue}} selected</option>
+          {{else}}
+          <option value={{enum.enumValue}}>{{enum.enumValue}}</option>
+          {{/if}}
+          {{/if}}
+          {{/each}}
+        </select>
+
+      </div>
+
+      <div class="add-coin-button-wrapper">
+
+        {{#if @model.coin}}
+        <button type="submit">Save</button>
+        {{else}}
+        <button type="submit">Add</button>
+        {{/if}}
+
+      </div>
+    </form>
+
+  </div>
+</div>

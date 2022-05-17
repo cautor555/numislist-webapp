@@ -1,29 +1,33 @@
 /* Modal Content */
-.edit-coin-modal-content {
+#collection-wrapper {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 5px;
   width: 40%;
-  height: 50%;
-}
+  max-width: 400px;
+  min-width: 300px;
+  h2{
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
+  .list-wrapper{
+    text-align: center;
+    button{
+      margin-top: 20px;
+      width: 100px;
+      height: 25px;
+    }
+  }
 
+    .add-collection-button{
+      text-align: center;
+    }
+
+}
 
   /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

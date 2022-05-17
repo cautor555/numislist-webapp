@@ -1,0 +1,68 @@
+/* Modal Content */
+.coin-modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 40%;
+  max-width: 400px;
+  min-width: 300px;
+
+  h2{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+  .add-coin-button-wrapper{
+    text-align: center;
+    button{
+      width: 50px;
+      height: 25px;
+    }
+  }
+
+  Input, Select{
+    float: right;
+  }
+
+  Label{
+    text-align: right;
+    margin-right: 40px;
+  }
+
+  .grade-select, .date-input, .mintmark-select{
+    width: 60%;
+  }
+}
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+input[type='text'],
+  input[type='text'],
+  select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .inputs {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    *{
+    margin-bottom: 10px;
+    }
+  }

@@ -3,53 +3,55 @@
 
 
 <div class="collection-body">
-
-
   <div class="collection-info">
     <h1>{{@model.collection.collectionName}}</h1>
-    <h3>Progress: {{progress @model.coins}} / {{@model.coins.length}}</h3>
 
-    <progress id="progress" value={{progress @model.coins}} max={{@model.coins.length}}></progress>
+    <div class="progress-info">
+      <h3>Progress: {{progress @model.coins}} / {{@model.coins.length}}</h3>
+      <progress id="progress" value={{progress @model.coins}} max={{@model.coins.length}}></progress>
+    </div>
+
+    <h2>Denomination: {{@model.collection.denominationQuantity}} {{@model.collection.denomination}}</h2>
+    <h2>Issuer: {{@model.collection.issuer}}</h2>
+
 
 
   </div>
 
-
-  <div class="collection-info">
-
-    <span>Denomination:</span>
-    <h2>{{@model.collection.denominationQuantity}} {{@model.collection.denomination}}</h2>
-
-  
+  {{#if (eq @model.collection.userId @model.user.userId) }}
+  <div class="add-coin-button-wrapper">
+    <button type="button" {{action "addCoinModal" }}>Add coin</button>
   </div>
-
+  {{/if}}
+  <div class="add-coin-button-wrapper">
+    <button type="button" {{action "copyCollection" @model.collection.collectionId}}>Copy collection</button>
+  </div>
 
   <div class="coin-list">
     {{#each @model.coins as |coin|}}
     <ol>
+      {{#if (eq @model.collection.userId @model.user.userId) }}
       <Input id="coin-checkbox" @type="checkbox" @checked={{coin.inCollection}} {{on "input" (fn this.checkCoin
-        coin.coinId) }} /> 
+        coin.coinId) }} />
+      {{else}}
+      <Input id="coin-checkbox" @type="checkbox" @checked={{coin.inCollection}} onclick="return false;" />
+      {{/if}}
+
       <LinkTo @route="coin" @model={{coin.coinId}} class="coin-link">
         <div class="coin-link-info">
-          
           <h2>{{coin.date}}</h2>
           <h2>{{coin.mintMark}}</h2>
           <h2>{{coin.attributes}}</h2>
-          <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
-          <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
-
         </div>
-
       </LinkTo>
     </ol>
 
     {{/each}}
   </div>
 
-  <div class="add-coin-button-wrapper">
-    <button type="button" {{action "addCoinModal"}}>Add coin</button>
-  </div>
+
 
 </div>
-<div id="add-coin-modal"><EditCoin ></EditCoin></div>
-
+<div id="coin-modal">
+  {{coin-modal model=@model}}
+</div>

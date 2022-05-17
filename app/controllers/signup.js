@@ -11,11 +11,6 @@ export default class Signup extends Controller {
   @tracked email;
   @tracked password;
 
-  // beforeModel(){
-  //   this.session.prohibitAuthentication('index');
-  // }
-
-
   @action
   async signUp(event) {
     event.preventDefault();

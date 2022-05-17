@@ -1,13 +1,3 @@
 <Navbar>
 </Navbar>
 
-<h1>Messages</h1>
-
-{{#each @model.messagesIds as |message-info|}}
-{{!-- <div class="message"> --}}
-  <h3 class="message-content">{{message-info.username}}</h3>
-{{!-- </div> --}}
-
-<LinkTo @route="message" @model={{message-info.userId}} class="coin-link">{{message-info.userId}}</LinkTo>
-
-{{/each}}

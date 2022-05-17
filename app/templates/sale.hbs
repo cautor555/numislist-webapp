@@ -1,5 +1,34 @@
 <Navbar>
 </Navbar>
 
-<h1>Sale</h1>
+
+<div class="sale-body">
+<h1>Coins listed for sale</h1>
+
+  <div class="coin-list">
+
+    {{#each @model.coins as |coin|}}
+
+    <ol>
+
+      <LinkTo @route="coin" @model={{coin.coinId}} class="coin-link">
+        <div class="coin-link-info">
+
+          <h2>{{coin.date}}</h2>
+          <h2>{{coin.mintMark}}</h2>
+          <h2>{{coin.attributes}}</h2>
+
+          <div class="price">
+            <h3>Price: ${{coin.listPrice}}</h3>
+          </div>
+
+        </div>
+
+      </LinkTo>
+    </ol>
+
+
+    {{/each}}
+  </div>
+</div>
 

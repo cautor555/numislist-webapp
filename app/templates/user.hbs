@@ -1,3 +1,21 @@
 <Navbar></Navbar>
 
-<h1>User</h1>
+<div class="user-body">
+  <div class="user-info">
+    <h1>{{@model.user.username}}</h1>
+    <h2>Email: {{@model.user.email}}</h2>
+
+    <h3>Joined: {{date @model.user.joinDate}}</h3>
+  </div>
+
+  <div class="message-chains">
+    <h1>Messages</h1>
+    {{#each @model.messagesIds as |message-info|}}
+
+    <LinkTo @route="message" @model={{message-info.userId}} class="message-link">
+      <h2 class="user-label">{{message-info.username}}</h2>
+    </LinkTo>
+
+    {{/each}}
+  </div>
+</div>

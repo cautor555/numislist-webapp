@@ -11,14 +11,16 @@ export default class login extends Controller {
   @tracked error;
 
   @action
-  authenticate(event) {
+  async authenticate(event) {
     event.preventDefault();
 
     try {
-      this.session.authenticate('authenticator:auth-manager', this.username, this.password)
+      await this.session.authenticate('authenticator:auth-manager', this.username, this.password);
     } catch (error) {
-      this.error = err;
-      console.log(err);
+      this.error = error;
+      console.log(this.error);
+      console.log("test");
+
     }
   }
 
@@ -28,26 +30,5 @@ export default class login extends Controller {
   }
 }
 
-// import Controller from '@ember/controller';
-// import Ember from 'ember';
-
-// export default Controller.extend({
-
-//   authManager: Ember.inject.service(),
-
-//   isExpanded: false,
-
-//   actions: {
-//     authenticate() {
-//       const { login, password } = this.getProperties('username', 'password');
-//       this.get('authManager').authenticate('cautor', 'password').then(() => {
-//         alert('Success! Click the top link!');
-//       }, (err) => {
-//         alert('Error obtaining token: ' + err.responseText);
-//       });
-
-//     }
-//   }
-// });
 
 

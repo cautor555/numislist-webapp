@@ -3,13 +3,16 @@
 <Navbar>
 </Navbar>
 
-
 <div class="coin-body">
 
   <div class="like-checkbox-container">
+
+    {{#if (eq @model.coin.userId @model.user.userId) }}
     <Input class="coin-checkbox" @type="checkbox" @checked={{@model.coin.inCollection}} {{on "input" (fn this.checkCoin
       @model.coin.coinId) }} />
+    {{/if}}
 
+    {{#if (eq @model.collection.permissions "Public") }}
     <button class="like-button" {{action "like" @model.user.userId @model.coin.coinId (isLiked @model.likes
       @model.user.userId)}}>
       {{#if (isLiked @model.likes @model.user.userId) }}
@@ -57,6 +60,8 @@
     <h3>{{@model.likes.length}} Likes</h3>
     {{/if}}
 
+    {{/if}}
+
   </div>
 
   <div class="coin-info-container">
@@ -68,78 +73,108 @@
     </div>
 
     <div class="secondary-coin-info">
+      {{#if @model.coin.listPrice}}
+      <label for="sale">Price: </label>
+      <h2>${{@model.coin.listPrice}}</h2>
+      {{/if}}
+
+
+      {{#if @model.coin.notes}}
       <label for="notes">Notes: </label>
       <h2>{{@model.coin.notes}}</h2>
+      {{/if}}
 
       {{#if @model.coin.grade }}
+      {{#if (eq @model.coin.grade 'Not Graded')}}
+      {{else}}
       <label for="grade">Grade:</label>
       <h2>{{@model.coin.grade}}</h2>
       {{/if}}
+      {{/if}}
     </div>
 
-
+    {{#if (eq @model.coin.userId @model.user.userId) }}
     <div class="edit-delete-container">
-      <button {{action "openModal" @model.coin.coinId}}>Edit</button>
+      <button {{action "editCoinModal" @model.coin.coinId}}>Edit</button>
+      {{#if @model.coin.listPrice}}
+      {{else}}
+      <button {{action "sellModal" @model.coin.coinId }}>Sell</button>
+      {{/if}}
       <button {{action "deleteCoin" @model.coin.coinId @model.coin.collectionId}}>Delete</button>
     </div>
+    {{else}}
+    <div class="message-seller">
+      <button {{action "messageSeller" @model.user.userId 1}}>Message seller</button>
+    </div>
+    {{/if}}
 
     <div class="ebay-link">
-      <a href="https://www.ebay.com/sch/11116/i.html?_from=R40&_nkw={{@model.coin.date}}+{{@model.coin.mintMark}}+{{@model.coin.denomination}}&_oac=1"
+      <a href="https://www.ebay.com/sch/11116/i.html?_from=R40&_nkw={{@model.coin.date}}+{{@model.coin.mintMark}}+{{@model.coin.denomination}}+{{@model.coin.attributes}}&_oac=1"
         target="_blank">Find on Ebay↗</a>
     </div>
 
-
+    {{#if (eq @model.collection.permissions "Public") }}
 
     <div class="comments">
-      <h2>Comments</h2>
+
+      {{#if (eq @model.comments.length 1)}}
+      <h2>{{@model.comments.length}} Comment</h2>
+      {{else}}
+      <h2>{{@model.comments.length}} Comments</h2>
+      {{/if}}
 
       <form class="new-comment">
         <Textarea @cols="80" name="comment-text" @rows="1" {{on "change" (fn this.update "commentText" )}}
           @value="{{this.commentText}}" />
 
         <div class="submit-comment-button">
-          {{!-- <LinkTo @route="signup" class="LinkTo">Sign Up</LinkTo> --}}
           <button {{action "addComment" @model.coin.coinId @model.user.userId}}>Comment</button>
         </div>
-
       </form>
 
       {{#each @model.comments as |comment|}}
       <div class="comment">
         <h3 class="comment-content">{{comment.comment}}</h3>
         <h4 class="comment-username">{{comment.username}}</h4>
-        {{!-- <h5 class="comment-date">{{date comment.timestamp}}</h5> --}}
         {{#if comment.timestamp}}
-        <h4>{{date comment.timestamp}}</h4>
+        <h4 class="timestamp">{{date comment.timestamp}}</h4>
         {{else}}
         {{/if}}
       </div>
       {{/each}}
 
     </div>
+    {{/if}}
 
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <div class="coin-image-container">
-    <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
-    <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
-    <img src="http://10.252.174.190:8080/coin/1/image/1" alt="Girl in a jacket">
+
+    {{#if (eq @model.coin.userId @model.user.userId) }}
+    <label class="custom-file-upload">
+      <input id="file-upload" name="file-upload" type="file" class="sr-only" accept="image/jpeg, image/png"
+        {{on "change" this.didUploadImage}} />
+      <div class="button-style">
+        <h3>Upload image</h3>
+      </div>
+    </label>
+    {{/if}}
+
+
+    {{#each @model.images as |image|}}
+    <img src="http://10.252.174.190:8080/coin/{{@model.coin.coinId}}/image/{{image.imageId}}"
+      alt="image {{image.imageId}}">
+    {{/each}}
+    <img id="new-img" src="" alt="">
+
   </div>
 
 </div>
 
-{{!-- <EditCoin></EditCoin> --}}
+<div id="coin-modal">
+  {{coin-modal model=@model}}
+</div>
+
+<div id="sell-modal">
+{{sell-modal}}
+</div>

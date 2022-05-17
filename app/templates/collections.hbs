@@ -1,12 +1,21 @@
 <Navbar>
 </Navbar>
 
-<h1>Collections</h1>
+<div class="collections-body">
+  <h1>Collections</h1>
 
-{{!-- <LinkTo @route="coin" @model="1">Coin 1</LinkTo> --}}
-{{!-- <LinkTo @route="coin" @model="2">Coin 2</LinkTo> --}}
+  {{#each @model.collections as |collection|}}
+  <LinkTo @route="collection" @model={{collection.collectionId}}>
+    <h2>
+      {{collection.collectionName}}
+    </h2>
+  </LinkTo>
+  {{/each}}
 
-{{#each @model.collections as |collection|}}
-  {{!-- <h1>{{collection.collectionId}}</h1> --}}
-  <LinkTo @route="collection" @model={{collection.collectionId}}>Collection: {{collection.collectionName}}</LinkTo>
-{{/each}}
+  <div class="add-collection-button">
+    <button {{action "collectionModal" }}>Add collection</button>
+  </div>
+  <div id="collection-modal">
+    {{collection-modal}}
+  </div>
+</div>

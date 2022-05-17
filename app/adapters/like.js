@@ -8,15 +8,10 @@ export default DS.RESTAdapter.extend({
   session: inject('session'),
 
   findRecord: function(store, type, id, snapshot) {
-    // liked
-
     if (snapshot.adapterOptions) {
       let url = `http://10.252.174.190:8080/coin/${snapshot.adapterOptions.prefix}/liked`;
       let query = {
-        // include: Ember.get(snapshot.adapterOptions, 'include')
       };
-      // const myArray = url.split("coin/");
-      // url = myArray[0] + this.namespace + snapshot.adapterOptions.prefix + myArray[1];
 
       return this.ajax(url, 'GET', { data: query });
     } else {
@@ -29,7 +24,6 @@ export default DS.RESTAdapter.extend({
     if (snapshot.adapterOptions) {
       let url = this.buildURL(type.modelName, id, snapshot, 'findRecord');
       let query = {
-        // include: Ember.get(snapshot.adapterOptions, 'include')
       };
       const myArray = url.split("coin/");
       url = myArray[0] + this.namespace + snapshot.adapterOptions.prefix + myArray[1];

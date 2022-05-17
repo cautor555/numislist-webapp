@@ -1,80 +1,70 @@
-
-.collection-body{
-
-  .collection-info *{
-    display: inline;
-  }
-
-  .coin-list{
-    display:flow-root;
-  
-    ol{
-      padding-left: 0px;
+.collection-body {
+  .collection-info {
+    * {
+    display: block;
+    margin-bottom: 10px;
     }
-  
-    .coin-link{
-      text-decoration: none;
-    }
-    h2{
+
+    .progress-info *{
       display: inline-block;
-      margin-right: 4px; 
-    }
-  
-    img {
-      // float: right;
-      width: 80px;
-      height: 80px;
+      margin: auto;
     }
   }
 
+  .add-coin-button-wrapper {
+    text-align: center;
+
+    button {
+      margin-bottom:10px ;
+      width: 120px;
+      height: 30px;
+    }
+  }
+
+  .coin-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    #coin-checkbox {
+      width: 32px;
+      height: 32px;
+      margin-right: 20px;
+      vertical-align: middle;
+    }
+
+    ol *{
+      display: inline-block;
+    }
+
+    .coin-link {
+      text-decoration: none;
+      color: black;
+    }
+
+    .coin-link-info{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+  }
 }
 
 
-
-// .collection-info{
-//   display: grid;
-//   grid-template-columns: auto auto;
-// }
-
-// .collection-info, .coin-list{
-//   padding-left: 10px;
-//   justify-content: left;
-// }
-
-// .collection-info h2, .collection-info span{
-//   // display: inline-block;
-//   padding-right: 10px;
-
-//   font-weight: 100;
-//   font-size: large;
-// }
-
-// a:link {color: black;text-decoration:none;}
-// a:visited {color:#0000ff;text-decoration:none;}
-// a:hover {text-decoration:underline;}
-
-
-// .add-coin-button-wrapper, button{
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
 progress {
-  border-radius: 7px; 
+  border-radius: 7px;
   margin-right: 250px;
 }
 progress::-webkit-progress-bar {
-  background-color:#333;
+  background-color: #333;
   border-radius: 7px;
   width: 400px;
 }
 progress::-webkit-progress-value {
   background-color: #5386e4;
   border-radius: 7px;
-}
-
-
-#add-coin-modal{
-  display: none;
 }

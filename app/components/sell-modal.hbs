@@ -1,0 +1,18 @@
+<div id="sell-wrapper">
+  <div class="list-wrapper">
+    <h2>List for sale</h2>
+  </div>
+
+  <form class="add-coin-form" onsubmit="return false" {{on "submit" this.sell }}>
+
+    <label for="price">Price:</label>
+    <input value={{@model.coin.date}} class="date-input" type="number" min="0" max="999999999" step="any" name="price"
+      {{on "change" (fn this.update "price" )}} required>
+
+    <div class="list-wrapper">
+      <button type="submit">List</button>
+    </div>
+  </form>
+
+
+</div>

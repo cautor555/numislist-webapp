@@ -1,0 +1,55 @@
+<div id="collection-wrapper">
+  <div class="add-collection">
+    <h2>Add Collection</h2>
+  </div>
+
+
+  <form class="add-coin-form" onsubmit="return false" {{on "submit" this.addCollection }}>
+
+    <div class="inputs">
+
+      <label for="collectionName">Collection name:</label>
+      <input type="text" name="collectionName" {{on "change" (fn this.update "collectionName" )}}>
+
+      <label for="denomination">Denomination:</label>
+      <select name="denomination" id="denomination" {{on "change" (fn this.update "denomination" )}}>
+        <option value="Cent">Cent</option>
+        <option value="Dollar">Dollar</option>
+      </select>
+
+      <label for="dquantity">Denomination quantity</label>
+      <select name="dquantity" id="dquantity" {{on "change" (fn this.update "denominationQuantity" )}}>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+
+      <label for="issuer">Coin issuer</label>
+      <select name="issuer" id="issuer" {{on "change" (fn this.update "issuer" )}}>
+        <option value="United States">United States</option>
+        <option value="Canada">Canada</option>
+
+      </select>
+
+      <label for="permissions">Permissions</label>
+      <select name="permissions" id="permissions" {{on "change" (fn this.update "permissions" )}}>
+        <option value="Public">Public</option>
+        <option value="Private">Private</option>
+
+      </select>
+
+    </div>
+
+    <div class="add-collection-button">
+    <button type="submit">Add</button>
+    </div>
+
+  </form>
+
+</div>

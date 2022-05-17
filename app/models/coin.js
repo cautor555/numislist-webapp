@@ -12,4 +12,10 @@ export default class Coin extends Model {
   @attr('boolean') inCollection;
   @attr('string') notes;
   @attr('date') timestamp;
+
+  @attr('number') userId;
+  @attr('number') listPrice;
+  @attr('number') order;
+  
+
 }

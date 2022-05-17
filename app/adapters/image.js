@@ -14,7 +14,7 @@ export default DS.RESTAdapter.extend({
       let query = {
       };
       const myArray = url.split("coin/");
-      url = 'http://10.252.174.190:8080/user/messages/' + snapshot.adapterOptions.prefix;
+      url = `http://10.252.174.190:8080/coin/${snapshot.adapterOptions.prefix}/images`;
 
       return this.ajax(url, 'GET', { data: query });
     } else {
@@ -22,11 +22,12 @@ export default DS.RESTAdapter.extend({
     }
   },
 
-  createRecord : function(store, type, snapshot) {
-      let data = this.serialize(snapshot, { includeId: true });
-      let url = `http://10.252.174.190:8080/user/message`;
+  findRecord: function (store, type, id, snapshot) {
+    let url = `http://10.252.174.190:8080/coin/${snapshot.adapterOptions.prefix}/image/` + id;
 
-      return this.ajax(url, 'POST', { data: data });
+    let query = {
+    };
+    return this.ajax(url, 'GET', { data: query });
   },
 
   headers: computed('session.data.authenticated.access_token', function () {

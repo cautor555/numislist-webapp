@@ -1,0 +1,28 @@
+.user-body{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+
+  .user-info{
+    h1{
+    margin-bottom: 10px;
+      
+    }
+  }
+
+  .message-chains{
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    max-width: 300px;
+    height: 80vh;
+
+    .user-label, h1{
+      margin: 10px 50px;
+      text-align: center;
+    }
+
+    .message-link:visited {
+      color: black;
+    }
+  }
+}

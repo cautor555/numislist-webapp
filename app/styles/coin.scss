@@ -14,24 +14,35 @@
 
     .like-button {
       background-color: transparent;
-      margin: 20px 20px 5px;
+      margin: 20px 10px 5px;
     }
   }
 
   .coin-info-container {
+    .primary-coin-info h1:last-child {
+      margin-left: 16px;
+    }
+
     .primary-coin-info {
+      margin-bottom: 10px;
+      h1 {
+        display: inline-block;
+        margin-right: 4px;
+      }
     }
 
     .secondary-coin-info {
+      h2 {
+        margin-bottom: 10px;
+      }
     }
 
-    .ebay-link{
+    .ebay-link {
       padding-top: 10px;
       padding-bottom: 10px;
     }
 
     .edit-delete-container {
-      padding-top: 5px;
       padding-bottom: 20px;
 
       button {
@@ -44,29 +55,7 @@
         cursor: pointer;
       }
     }
-
-    
-
-
-
-
-
-    .primary-coin-info h1 {
-      display: inline-block;
-      margin-right: 4px;
-    }
-
-    .primary-coin-info h1:last-child {
-      margin-left: 16px;
-    }
   }
-
-  
-
-
-
-
-
 
   .comments {
     padding-top: 20px;
@@ -75,7 +64,7 @@
     .comment {
       width: 90%;
       border-radius: 5px;
-      padding: 0px;
+      padding: 10px;
       margin: 10px 0px;
       border-width: 2px;
       border-color: black;
@@ -84,13 +73,9 @@
     }
 
     .new-comment .submit-comment-button {
-      // text-align: center;
       display: flex;
       width: 100px;
       height: 25px;
-
-      // justify-content: right;
-      // align-items: right;
     }
 
     .new-comment Textarea {
@@ -106,53 +91,61 @@
   }
 
   .coin-image-container {
-    img {
-      width: 200px;
-      height: 200px;
+    float: right;
+    border: 2px solid #555;
+    padding: 10px;
+    margin: 5px;
+    padding-bottom: 100px;
+    border-radius: 5px;
 
-      // margin: 10px;
+    .add-image-wrapper {
+      margin-bottom: 10px;
+      text-align: center;
+      button{
+        width: 100px;
+      height:30px;
+      }
+    }
+
+    img {
+      width: 100%;
+      max-width: 500px;
       margin-left: auto;
       margin-right: auto;
       display: block;
+      margin-bottom: 10px;
     }
-    float: right;
-    border: 4px solid #555;
-    padding: 20px 10px;
-    margin: 5px;
-    padding-bottom: 100px;
-    border-radius: 2px;
   }
 }
 
-// .coin-body {
-//   display: grid;
-//   grid-template-columns: 3fr 1fr;
-//   // background-color: aqua;
-// }
+#sell-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
 
-// #coin-checkbox {
-//   width: 40px;
-//   height: 40px;
-// }
+input[type="file"] {
+  display: none;
+  padding: 10px;
+}
 
-// .coin-info {
-//   background-color:bisque;
-//   h2 {
-//     font-size: 50px;
-//     font-weight: normal;
-//   }
-// }
+.button-style{
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 
-// #editCoin {
-//   display: none; /* Hidden by default */
-//   position: fixed; /* Stay in place */
-//   z-index: 1; /* Sit on top */
-//   padding-top: 100px; /* Location of the box */
-//   left: 0;
-//   top: 0;
-//   width: 100%; /* Full width */
-//   height: 100%; /* Full height */
-//   overflow: auto; /* Enable scroll if needed */
-//   background-color: rgb(0,0,0); /* Fallback color */
-//   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-// }
+  h3{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
